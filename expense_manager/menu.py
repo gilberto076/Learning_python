@@ -1,5 +1,8 @@
 
 
+from decimal import Decimal, InvalidOperation
+
+# showing the menu to the user 
 def show_menu():
     ...
     print("...Expense manager choise an opcion...")
@@ -33,9 +36,11 @@ def show_menu():
 
 
 
-
+#printing the menu and getting the user choise
 def get_user_choice():
-   ...
+    choise = show_menu()
+    print(f"User choice: {choise}")
+
     
 
 
@@ -43,10 +48,19 @@ def run_menu():
     ...
 
 
+
+# Handling the "Add Expense" option
 def handle_add_expense():
-    ...
+   ...
+    
 
 
+
+def show_categories():
+    categories = ["Food", "Transportation", "Housing", "Health", "Education", "Entertaiment","Services", "Other"]
+    print("Available categories:")
+    for category in categories:
+        print(category)
 
 def handle_edit_expense():
     ...
