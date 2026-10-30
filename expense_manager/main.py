@@ -1,9 +1,10 @@
 import menu
+import storage
 
 def main():
 
-    menu.show_menu()
-    menu.show_categories()
+   gastos =  menu.handle_add_expense()
+   storage.save_expenses(gastos=gastos)
     
 
 

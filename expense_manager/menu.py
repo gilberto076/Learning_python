@@ -2,6 +2,8 @@
 
 from decimal import Decimal, InvalidOperation
 
+gastos = []
+
 # showing the menu to the user 
 def show_menu():
     ...
@@ -51,8 +53,51 @@ def run_menu():
 
 # Handling the "Add Expense" option
 def handle_add_expense():
-   ...
-    
+        
+
+        while True:
+          description = input("Enter the description of the expense: ").strip()
+          amount_input = input("Enter the amount of the expense: ").strip()
+          category = input("Enter the category of the expense: ").strip()
+          date = input("Enter the date of the expense DD/MM/AAAA: ").strip()
+
+          # --- Validation ---
+          if not description:
+           print("Description cannot be empty.")
+           continue
+
+          if not category:
+           print("Category cannot be empty.")
+           continue
+
+          if not date:
+           print("Date cannot be empty.")
+           continue
+
+          try:
+           amount = Decimal(amount_input)
+           if amount <= 0:
+             print("Amount must be greater than zero.")
+             continue
+          except (InvalidOperation, TypeError):
+            print("Amount must be a valid number.")
+            continue
+
+          break  # all good, exit the loop
+
+
+        new_expense = {
+            "id": len(gastos) + 1,
+            "description": description,
+            "amount": Decimal(str(amount)),   # convert to Decimal
+            "category": category,
+            "date": date,
+        }
+        gastos.append(new_expense)
+        return gastos
+
+        
+
 
 
 
@@ -61,6 +106,7 @@ def show_categories():
     print("Available categories:")
     for category in categories:
         print(category)
+
 
 def handle_edit_expense():
     ...
@@ -72,4 +118,3 @@ def handle_delete_expense():
 
 def handle_list_expensive():
     ...
-
