@@ -1,1 +1,27 @@
-[{"id": 1, "description": "platos de comida", "amount": "2", "category": "comida", "date": "30/10/2026"}]
+[
+  {
+    "id": 1,
+    "description": "platos de comida",
+    "amount": "2",
+    "category": "comida",
+    "date": "30/10/2026"
+  },
+  [
+    {
+      "id": 2,
+      "description": "granizadas",
+      "amount": "5",
+      "category": "golosinas",
+      "date": "30/10/2026"
+    }
+  ],
+  [
+    {
+      "id": "a3e872b0-8aae-4b48-b045-550a66886124",
+      "description": "diesel",
+      "amount": "1",
+      "category": "combustibles",
+      "date": "28/10/2026"
+    }
+  ]
+]

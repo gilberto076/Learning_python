@@ -1,6 +1,7 @@
 
 
 from decimal import Decimal, InvalidOperation
+import uuid
 
 gastos = []
 
@@ -87,7 +88,7 @@ def handle_add_expense():
 
 
         new_expense = {
-            "id": len(gastos) + 1,
+            "id": str(uuid.uuid4()),
             "description": description,
             "amount": Decimal(str(amount)),   # convert to Decimal
             "category": category,

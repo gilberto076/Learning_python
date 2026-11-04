@@ -4,7 +4,7 @@ import storage
 def main():
 
    gastos =  menu.handle_add_expense()
-   storage.save_expenses(gastos=gastos)
+   storage.save_expenses(gastos)
     
 
 
