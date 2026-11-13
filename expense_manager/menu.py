@@ -1,9 +1,18 @@
 
 
 from decimal import Decimal, InvalidOperation
+from email import message
 import uuid
+from storage import  load_expenses, save_data, generate_unique_id
+from validators import (
+    validate_id,
+    validate_required,
+    validate_amount,
+    validate_date,
+    validate_category,
+)
 
-gastos = []
+categories = ["Food", "Transportation", "Housing", "Health", "Education", "Entertainment","Services", "Other"]
 
 # showing the menu to the user 
 def show_menu():
@@ -50,62 +59,62 @@ def get_user_choice():
 def run_menu():
     ...
 
+def prompt_validated(message, validator, *args, ):
+    while True:
+        raw = input(message) 
+        cleaned, error = validator(raw, *args)
 
-
-# Handling the "Add Expense" option
-def handle_add_expense():
-        
-
-        while True:
-          description = input("Enter the description of the expense: ").strip()
-          amount_input = input("Enter the amount of the expense: ").strip()
-          category = input("Enter the category of the expense: ").strip()
-          date = input("Enter the date of the expense DD/MM/AAAA: ").strip()
-
-          # --- Validation ---
-          if not description:
-           print("Description cannot be empty.")
-           continue
-
-          if not category:
-           print("Category cannot be empty.")
-           continue
-
-          if not date:
-           print("Date cannot be empty.")
-           continue
-
-          try:
-           amount = Decimal(amount_input)
-           if amount <= 0:
-             print("Amount must be greater than zero.")
-             continue
-          except (InvalidOperation, TypeError):
-            print("Amount must be a valid number.")
+        if error:
+            print(error)
             continue
 
-          break  # all good, exit the loop
+        return cleaned
 
 
-        new_expense = {
-            "id": str(uuid.uuid4()),
-            "description": description,
-            "amount": Decimal(str(amount)),   # convert to Decimal
-            "category": category,
-            "date": date,
-        }
-        gastos.append(new_expense)
-        return gastos
+
+def handle_add_expense():
+     
+    id =   validate_id (generate_unique_id( load_expenses()))
+
+       
+
+    description = prompt_validated(
+        "Enter description: ",
+        validate_required,
+        "Description"
+    )
+
+    amount = prompt_validated(
+        "Enter amount: ",
+        validate_amount
+    )
+
+    show_categories()
+
+    category = prompt_validated(
+        "Enter category: ",
+        validate_category,
+        categories
+    )
+
+    date = prompt_validated(
+        "Enter date (DD/MM/YYYY): ",
+        validate_date
+    )
+
+
+    data = save_data(id ,description, amount, category, date)
+
+
+    return data
+ 
 
         
 
-
-
-
 def show_categories():
-    categories = ["Food", "Transportation", "Housing", "Health", "Education", "Entertaiment","Services", "Other"]
+    categories1 = categories
     print("Available categories:")
-    for category in categories:
+    for category in categories1:
         print(category)
 
 

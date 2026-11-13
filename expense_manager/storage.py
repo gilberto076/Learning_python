@@ -1,6 +1,9 @@
 import json
 import os
 from decimal import Decimal
+import uuid
+
+from validators import id_exists
 
 # This module handles the storage of expenses in a JSON file.
 # It is responsible for reading the saved list of expenses and adding new ones.
@@ -28,3 +31,24 @@ def save_expenses(nuevo_gasto, archivo="data/gastos.json"):
     # Save the complete list back to the JSON file.
     with open(archivo, "w") as f:
         json.dump(gastos, f, default=str, indent=2)
+
+
+# generation: uses id_exists
+def generate_unique_id(existing):
+    new_id = str(uuid.uuid4())
+
+    while id_exists(new_id, existing):
+        new_id = str(uuid.uuid4())
+
+    return new_id
+
+def save_data(id_p, description, amount, category, date):
+    expense = {
+        "id": id_p,
+        "description": description,
+        "amount": amount,
+        "category": category,
+        "date": date,
+    }
+    return expense
+
