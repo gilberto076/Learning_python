@@ -3,13 +3,14 @@
 from decimal import Decimal, InvalidOperation
 from email import message
 import uuid
-from storage import  load_expenses, save_data, generate_unique_id
+from storage import  load_expenses, save_data, generate_unique_id, save_expenses
 from validators import (
     validate_id,
     validate_required,
     validate_amount,
     validate_date,
     validate_category,
+    validate_menu_enter
 )
 
 categories = ["Food", "Transportation", "Housing", "Health", "Education", "Entertainment","Services", "Other"]
@@ -26,38 +27,20 @@ def show_menu():
 
 # validating data enter 
     options = [1,2,3,4]
-    while True:
-
-       enter  = input("Enter your choise (or press Enter to quit )")
-       if enter  == "":
-          print("Saliendo...")
-          break
-       
-       try:
-         choise = int(enter) 
-        
-       except ValueError:
-         print("Opcion no valida. Intenta de nuevo.")
-         continue 
-
-       if choise in options:
-          print (f"Has elegido {choise}")
-          return  choise
-       else:
-         print("Opcion no valida. Intenta de nuevo.")
-
+    choise = validate_menu_enter(options)
+    return choise
+   
 
 
 #printing the menu and getting the user choise
 def get_user_choice():
     choise = show_menu()
     print(f"User choice: {choise}")
-
+    return choise
     
 
 
-def run_menu():
-    ...
+
 
 def prompt_validated(message, validator, *args, ):
     while True:
@@ -103,13 +86,9 @@ def handle_add_expense():
     )
 
 
-    data = save_data(id ,description, amount, category, date)
+    save_data(id ,description, amount, category, date)
+    
 
-
-    return data
- 
-
-        
 
 def show_categories():
     categories1 = categories
@@ -119,12 +98,30 @@ def show_categories():
 
 
 def handle_edit_expense():
-    ...
+    print("Editing an expense...")
 
 
 def handle_delete_expense():
-    ...
+    print("Deleting an expense...")
 
 
 def handle_list_expensive():
-    ...
+    print("Listing expenses...")
+
+def run_menu():
+    while True:
+        choice = get_user_choice()
+
+        if choice == 1:
+            handle_add_expense()
+        elif choice == 2:
+            handle_edit_expense()
+        elif choice == 3:
+            handle_delete_expense()
+        elif choice == 4:
+            handle_list_expensive()
+        else:
+            print("Exiting...")
+            break
+    
+    

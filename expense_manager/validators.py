@@ -75,3 +75,26 @@ def id_exists(expense_id, expenses):
     return False
 
 
+ 
+def validate_menu_enter(options ):
+    while True:
+    
+           enter  = input("Enter your choise (or press Enter to quit )")
+           if enter  == "":
+              print("Saliendo...")
+              break
+           
+           try:
+             choise = int(enter) 
+            
+           except ValueError:
+             print("Opcion no valida. Intenta de nuevo.")
+             continue 
+    
+           if choise in options:
+              print (f"Has elegido {choise}")
+              return  choise
+           else:
+             print("Opcion no valida. Intenta de nuevo.")
+    
+    

@@ -50,5 +50,6 @@ def save_data(id_p, description, amount, category, date):
         "category": category,
         "date": date,
     }
-    return expense
+
+    save_expenses(expense)
 

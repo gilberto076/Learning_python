@@ -1,50 +1,65 @@
 [
-   {
+  {
     "id": 1,
     "description": "platos de comida",
     "amount": "70",
     "category": "comida",
     "date": "30/10/2026"
-   },
-  
-   {
-      "id": 2,
-      "description": "granizadas",
-      "amount": "53",
-      "category": "golosinas",
-      "date": "30/10/2026"
-    },
-  
-    {
-      "id": "a3e872b0-8aae-4b48-b045-550a66886124",
-      "description": "diesel",
-      "amount": "25",
-      "category": "combustibles",
-      "date": "28/10/2026"
-    },
-  
-    {
-      "id": "555811fc-ccc8-4840-a2fe-554e010e5f6a",
-      "description": "vitamina cerebro",
-      "amount": "140",
-      "category": "salud",
-      "date": "3/11/2026"
-    },
-  
-
-    {
-      "id": "cc27bf23-16cb-49d5-ad18-5a843169852c",
-      "description": "cadena de perro",
-      "amount": "25",
-      "category": "other",
-      "date": "4/11/2026"
-    },
-  
+  },
+  {
+    "id": 2,
+    "description": "granizadas",
+    "amount": "53",
+    "category": "golosinas",
+    "date": "30/10/2026"
+  },
+  {
+    "id": "a3e872b0-8aae-4b48-b045-550a66886124",
+    "description": "diesel",
+    "amount": "25",
+    "category": "combustibles",
+    "date": "28/10/2026"
+  },
+  {
+    "id": "555811fc-ccc8-4840-a2fe-554e010e5f6a",
+    "description": "vitamina cerebro",
+    "amount": "140",
+    "category": "salud",
+    "date": "3/11/2026"
+  },
+  {
+    "id": "cc27bf23-16cb-49d5-ad18-5a843169852c",
+    "description": "cadena de perro",
+    "amount": "25",
+    "category": "other",
+    "date": "4/11/2026"
+  },
   {
     "id": "5e7a71c8-e1a9-444f-a1ca-e46ae3b9c08c",
     "description": "comida",
     "amount": "90",
     "category": "Other",
     "date": "2026-11-08"
+  },
+  {
+    "id": "0169f1cd-be1b-4005-8ee9-611f6d898460",
+    "description": "chequo medico",
+    "amount": "1400",
+    "category": "Health",
+    "date": "2026-11-13"
+  },
+  {
+    "id": "c431951f-5b22-44dc-9157-b34600b9e6f6",
+    "description": "sueros",
+    "amount": "54",
+    "category": "Health",
+    "date": "2026-11-13"
+  },
+  {
+    "id": "e8f36e13-b9a4-4c6f-af87-d28fe6334c1a",
+    "description": "pago de telefono",
+    "amount": "217",
+    "category": "Entertainment",
+    "date": "2026-11-17"
   }
 ]

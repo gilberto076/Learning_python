@@ -1,12 +1,12 @@
 #import menu
 #from validators import validate_id
 #from storage import load_expenses, generate_unique_id
-from  menu import handle_add_expense
+#from storage import save_expenses
+from  menu import  run_menu
 def main():
 
    
-   expense = handle_add_expense()
-   print(f"Expense added: {expense }")
+ run_menu()
 
 
 if __name__ == "__main__":
