@@ -1,11 +1,7 @@
 
 
-from decimal import Decimal, InvalidOperation
-from email import message
-import uuid
-from storage import  load_expenses, save_data, generate_unique_id, save_expenses
+from expense_service import add_expense, prompt_validated
 from validators import (
-    validate_id,
     validate_required,
     validate_amount,
     validate_date,
@@ -41,52 +37,33 @@ def get_user_choice():
 
 
 
-
-def prompt_validated(message, validator, *args, ):
-    while True:
-        raw = input(message) 
-        cleaned, error = validator(raw, *args)
-
-        if error:
-            print(error)
-            continue
-
-        return cleaned
-
-
-
 def handle_add_expense():
      
-    id =   validate_id (generate_unique_id( load_expenses()))
-
-       
-
+   # menu.py
     description = prompt_validated(
-        "Enter description: ",
-        validate_required,
-        "Description"
-    )
+                  "Enter description: ",
+                   validate_required,
+                     "Description")
 
-    amount = prompt_validated(
-        "Enter amount: ",
-        validate_amount
-    )
-
+    amount      = prompt_validated(
+                 "Enter amount: ",
+                  validate_amount)
+    
     show_categories()
 
-    category = prompt_validated(
-        "Enter category: ",
-        validate_category,
-        categories
-    )
+    category    = prompt_validated(
+                  "Enter category: ",
+                   validate_category, 
+                   categories)
 
-    date = prompt_validated(
-        "Enter date (DD/MM/YYYY): ",
-        validate_date
-    )
+    date        = prompt_validated(
+                  "Enter date (DD/MM/YYYY): ",
+                   validate_date)
 
+    expense = add_expense(description, amount, category, date)
+    
+    print(f"Saved. New id: {expense['id']}")
 
-    save_data(id ,description, amount, category, date)
     
 
 
@@ -98,7 +75,14 @@ def show_categories():
 
 
 def handle_edit_expense():
-    print("Editing an expense...")
+    ...
+
+
+
+
+
+
+
 
 
 def handle_delete_expense():

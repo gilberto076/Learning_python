@@ -61,5 +61,12 @@
     "amount": "217",
     "category": "Entertainment",
     "date": "2026-11-17"
+  },
+  {
+    "id": "b324339e-a41c-4653-948d-6e6f23cc352c",
+    "description": "pizza",
+    "amount": "60",
+    "category": "Food",
+    "date": "2026-11-20"
   }
 ]

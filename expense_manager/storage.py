@@ -42,14 +42,14 @@ def generate_unique_id(existing):
 
     return new_id
 
-def save_data(id_p, description, amount, category, date):
-    expense = {
-        "id": id_p,
-        "description": description,
-        "amount": amount,
-        "category": category,
-        "date": date,
-    }
 
     save_expenses(expense)
+
+def search_expense_by_id(expense_id, expenses=None):
+    if expenses is None:
+        expenses = load_expenses()
+    for expense in expenses:
+        if expense.get("id") == expense_id:
+            return expense
+    return None
 
